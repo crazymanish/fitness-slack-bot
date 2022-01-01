@@ -7,8 +7,9 @@ This slack bot helps me daily with my workout:
 
 ## Features
 - [x] Morning, Evening workout slack message(s) with exercise list using GitHub workflows.
+- [x] SlackBot always sends the exercise name + image(hyperlink) i.e [Dumbbell Biceps curl](https://user-images.githubusercontent.com/5364500/147853934-d8bc2934-e579-4e80-9af9-1989096d52e9.jpg)
 - [x] Always share the previos workout day details too.  
-i.e if Today is Biceps day, it share the link of previous Biceps day workout thread!
+i.e if Today is Biceps day, it share the link for previous Biceps day workout details!
 
 #### Monday, Thursday: 
   - [x] Morning workout [Chest exercises](https://github.com/crazymanish/fitness-slack-bot/blob/main/exercises/chest_workout.csv)
