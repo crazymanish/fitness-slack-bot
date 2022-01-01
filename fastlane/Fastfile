@@ -1,8 +1,8 @@
 before_all do
-  ENV["SLACK_WORKSPACE_URL"] ||= "https://workspace.slack.com"
-  ENV["FL_POST_TO_SLACK_CHANNEL"] ||= "fitness"
-  ENV["SLACK_THREAD_URL"] ||= "#{ENV["SLACK_WORKSPACE_URL"]}/archives/#{ENV["FL_POST_TO_SLACK_CHANNEL"]}/p"
-  ENV["FL_SLACK_USERNAME"] ||= "Workout Bot"
+  ENV["SLACK_WORKSPACE_NAME"] ||= "company_name"
+  ENV["FL_POST_TO_SLACK_CHANNEL"] ||= "shit"
+  ENV["SLACK_THREAD_URL"] ||= "https://#{ENV["SLACK_WORKSPACE_NAME"]}.slack.com/archives/#{ENV["FL_POST_TO_SLACK_CHANNEL"]}/p"
+  ENV["FL_SLACK_USERNAME"] ||= "Fitness Bot"
   ENV["FL_SLACK_ICON_URL"] ||= "https://robohash.org/fitness"
 end
 

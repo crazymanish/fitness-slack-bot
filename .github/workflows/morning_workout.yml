@@ -16,4 +16,6 @@ jobs:
     - name: Morning workout message
       env:
         SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
+        FL_POST_TO_SLACK_CHANNEL: ${{ secrets.FL_POST_TO_SLACK_CHANNEL }}
+        SLACK_WORKSPACE_NAME: ${{ secrets.SLACK_WORKSPACE_NAME }}
       run: bundle exec fastlane morning_workout_slack_message
