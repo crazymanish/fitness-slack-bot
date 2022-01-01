@@ -1,0 +1,74 @@
+before_all do
+  ENV["SLACK_WORKSPACE_URL"] ||= "https://workspace.slack.com"
+  ENV["FL_POST_TO_SLACK_CHANNEL"] ||= "fitness"
+  ENV["SLACK_THREAD_URL"] ||= "#{ENV["SLACK_WORKSPACE_URL"]}/archives/#{ENV["FL_POST_TO_SLACK_CHANNEL"]}/p"
+  ENV["FL_SLACK_USERNAME"] ||= "Workout Bot"
+  ENV["FL_SLACK_ICON_URL"] ||= "https://robohash.org/fitness"
+end
+
+# Day1,4: Chest Triceps
+# Day2,5: Back Biceps
+# Day3,6: Abs Shoulders
+
+desc "Morning workout slack message"
+lane :morning_workout_slack_message do |options|
+  today = Date.today
+  options[:workout_file_name] = "chest_workout" if (today.monday? || today.thursday?)
+  options[:workout_file_name] = "back_workout" if (today.tuesday? || today.friday?)
+  options[:workout_file_name] = "abs_workout" if (today.wednesday? || today.saturday?)
+
+  post_message_to_slack(options)
+end
+
+desc "Evening workout slack message"
+lane :evening_workout_slack_message do |options|
+  today = Date.today
+  options[:workout_file_name] = "triceps_workout" if (today.monday? || today.thursday?)
+  options[:workout_file_name] = "biceps_workout" if (today.tuesday? || today.friday?)
+  options[:workout_file_name] = "shoulders_workout" if (today.wednesday? || today.saturday?)
+
+  post_message_to_slack(options)
+end
+
+private_lane :post_message_to_slack do |options|
+  options[:greeting] = get_random_greeting_message
+  options[:footer] = get_random_footer_message
+  options[:exercise_list] = get_exercise_list_message(options)
+  options[:last_workout_thread] = get_last_workout_thread(options)
+
+  # Post main message
+  result = post_to_slack(
+    pretext: options[:greeting],
+    message: "Gentle reminder for `#{options[:workout_file_name]}` day!",
+    default_payloads: [],
+    attachment_properties: {
+      footer: options[:footer]
+    }
+  )
+
+  # Important: Save this slack-thread timestamp for futher slack messages
+  options[:thread_ts] = result[:json]["ts"]
+
+  # Post exercise list message
+  post_to_slack(
+    pretext: "Exercise list:",
+    message: options[:exercise_list],
+    default_payloads: [],
+    thread_ts: options[:thread_ts]
+  )
+
+  # Last workout message
+  post_to_slack(
+    pretext: "Last `#{options[:workout_file_name]}` day :thread:",
+    message: "<#{options[:last_workout_thread]}|Thread> for more details. :muscle:",
+    default_payloads: [],
+    thread_ts: options[:thread_ts]
+  )
+
+  finish_next_workout_setup(options)
+
+  git_commit(path: ".", message: "Bumping for next #{options[:workout_file_name]} day!")
+  push_to_git_remote
+end
+
+import("Fastfile+Helper.rb")
