@@ -30,6 +30,13 @@ lane :evening_workout_slack_message do |options|
   post_message_to_slack(options)
 end
 
+desc "Random break slack message"
+lane :random_break_slack_message do |options|
+  coin_toss = [true, false].sample
+
+  post_random_break_message_to_slack(options) if coin_toss
+end
+
 private_lane :post_message_to_slack do |options|
   options[:greeting] = get_random_greeting_message
   options[:footer] = get_random_footer_message

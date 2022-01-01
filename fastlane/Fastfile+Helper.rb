@@ -84,3 +84,36 @@ private_lane :finish_next_workout_setup do |options|
     entry: options[:thread_ts],
     type: "Added")
 end
+
+##############################################################
+########################### Break ######################
+##############################################################
+
+private_lane :post_random_break_message_to_slack do |options|
+  options[:greeting] = get_random_greeting_message
+  break_message = [
+    "Random reminder to take a break, below are some suggestions:",
+    "• Short walk",
+    "• Read dutch book (not digital)",
+    "• Create a to-do list for personal/home-based tasks",
+    "• Something creative – like a puzzle, algorithm",
+    "• Have a healthy snack/meal",
+    "• Drink water",
+    "• Have a brief nap"
+  ].join("\n")
+
+  footer_message = [
+    "Fitness first!",
+    "you will achieve lots more goals if you will stay fit,",
+    "so close whatever doing & take a break! :robot_face:"
+  ].join(" ")
+
+  post_to_slack(
+    pretext: options[:greeting],
+    message: break_message,
+    default_payloads: [],
+    attachment_properties: {
+      footer: footer_message
+    }
+  )
+end

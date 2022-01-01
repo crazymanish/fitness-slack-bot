@@ -29,6 +29,14 @@ Morning workout slack message
 
 Evening workout slack message
 
+### random_break_slack_message
+
+```sh
+[bundle exec] fastlane random_break_slack_message
+```
+
+Random break slack message
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.

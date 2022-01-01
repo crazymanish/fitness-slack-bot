@@ -1,0 +1,19 @@
+name: Random break
+on:
+  schedule:
+    - cron: '0 9,12,15 * * 1-5' #9AM,12PM,03PM UTC (10AM,01PM,04PM AMS time), Monday to Friday
+jobs:
+  afternoonFlashcard:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Setup ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7
+        bundler-cache: true
+    - name: Random break message
+      env:
+        SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
+      run: bundle exec fastlane random_break_slack_message
