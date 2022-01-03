@@ -23,9 +23,9 @@ i.e if Today is Biceps day, it share the link for previous Biceps day workout de
   - [x] Morning workout [Abs exercises](https://github.com/crazymanish/fitness-slack-bot/blob/main/exercises/abs_workout.csv)
   - [x] Evening workout [Shoulders exercises](https://github.com/crazymanish/fitness-slack-bot/blob/main/exercises/shoulders_workout.csv)
 #### Notification 🧵
-<img width="414" src="https://user-images.githubusercontent.com/5364500/147903718-3607c9a3-5580-4a78-8b94-af86412a7d85.png">
+<img width="320" src="https://user-images.githubusercontent.com/5364500/147903718-3607c9a3-5580-4a78-8b94-af86412a7d85.png">
 
 
 ## Random break
 It is completely random with [50% chance](https://github.com/crazymanish/fitness-slack-bot/blob/main/fastlane/Fastfile#L35)! Enjoy your break!  
-<img width="500" src="https://user-images.githubusercontent.com/5364500/147861434-2df14452-6fca-4629-bd82-5b25b0c57bd3.png">
+<img width="414" src="https://user-images.githubusercontent.com/5364500/147980259-029cffe4-fab3-405d-855b-a19330a2f3f8.png">
