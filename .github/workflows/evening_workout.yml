@@ -3,7 +3,7 @@ on:
   schedule:
     - cron: '15 19 * * 1-6' #07:15PM UTC (08:15PM AMS time), Monday to Saturday
 jobs:
-  afternoonFlashcard:
+  eveningWorkout:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -13,6 +13,10 @@ jobs:
       with:
         ruby-version: 2.7
         bundler-cache: true
+    - name: Configure Git
+      run: |
+        git config --local user.email "i.am.manish.rathi@gmail.com"
+        git config --local user.name "Manish Rathi"
     - name: Evening workout message
       env:
         SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
