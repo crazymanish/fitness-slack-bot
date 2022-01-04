@@ -37,7 +37,6 @@ private_lane :get_exercise_list_message do |options|
   exercise_messages = []
 
   exercise_list.each do |exercise_info|
-    UI.success(exercise_info)
     exercise_name = exercise_info["EXERCISE_NAME"]
     exercise_url = exercise_info["URL"]
 
