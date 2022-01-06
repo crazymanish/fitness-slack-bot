@@ -29,3 +29,6 @@ i.e if Today is Biceps day, it share the link for previous Biceps day workout de
 ## Random break
 It is completely random with [50% chance](https://github.com/crazymanish/fitness-slack-bot/blob/main/fastlane/Fastfile#L35)! Enjoy your break!  
 <img width="414" src="https://user-images.githubusercontent.com/5364500/147980259-029cffe4-fab3-405d-855b-a19330a2f3f8.png">
+
+#### Exercise image(s)
+Copied from https://weighttraining.guide/exercises/
