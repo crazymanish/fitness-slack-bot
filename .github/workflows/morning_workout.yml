@@ -1,7 +1,7 @@
 name: Morning workout
 on:
   schedule:
-    - cron: '30 4 * * 1-6' #04:30AM UTC (05:30AM AMS time), Monday to Saturday
+    - cron: '45 3 * * *' #03:45AM UTC (04:45AM AMS time), Every day
 jobs:
   morningWorkout:
     runs-on: ubuntu-latest
