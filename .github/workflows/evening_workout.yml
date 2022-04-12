@@ -1,7 +1,7 @@
 name: Evening workout
 on:
   schedule:
-    - cron: '45 18 * * 1-6' #06:45PM UTC (07:45PM AMS time), Monday to Saturday
+    - cron: '45 5 * * 1-6' #05:45AM UTC (06:45AM AMS time), Monday to Saturday
 jobs:
   eveningWorkout:
     runs-on: ubuntu-latest
